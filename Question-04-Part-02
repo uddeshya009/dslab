@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a, b, c, d;
+    cout << " Enter rows and columns of first matrix : ";
+    cin >> a >> b;
+
+    cout << " Enter rows and columns of second matrix : ";
+    cin >> c >> d;
+
+    if (b != c) {
+        cout << " Matrix multiplication not possible " << endl;
+        return 0;
+    }
+
+    int mat1[a][b], mat2[c][d], result[a][d];
+
+    cout << " Enter elements of first matrix : \n";
+    for (int a_i = 0; a_i < a; a_i++)
+        for (int b_i = 0; b_i < b; b_i++)
+            cin >> mat1[a_i][b_i];
+
+    cout << " Enter elements of second matrix : \n";
+    for (int c_i = 0; c_i < c; c_i++)
+        for (int d_i = 0; d_i < d; d_i++)
+            cin >> mat2[c_i][d_i];
+
+    for (int a_i = 0; a_i < a; a_i++)
+        for (int d_i = 0; d_i < d; d_i++)
+            result[a_i][d_i] = 0;
+
+    for (int a_i = 0; a_i < a; a_i++) {
+        for (int d_i = 0; d_i < d; d_i++) {
+            for (int b_i = 0; b_i < b; b_i++) {
+                result[a_i][d_i] += mat1[a_i][b_i] * mat2[b_i][d_i];
+            }
+        }
+    }
+
+    cout << " Resultant matrix after multiplication : \n";
+    for (int a_i = 0; a_i < a; a_i++) {
+        for (int d_i = 0; d_i < d; d_i++) {
+            cout << result[a_i][d_i] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
